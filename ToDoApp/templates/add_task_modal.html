@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="addTask" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addTaskLabel">Add Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method = "post" action="{% url 'ToDoApp:add_task'%}">
+            {% csrf_token %}
+            <table class="d-flex justify-content-center">
+                <tr>
+                    <td> Title  : </td>
+                    <td> {{ form.title }} </td>
+                </tr>
+                <tr>
+                    <td> Description : </td>
+                    <td> {{ form.description }} </td>
+                </tr>
+                <tr>
+                    <td> Status : </td>
+                    <td> {{ form.status }} </td>
+                </tr>
+                <tr>
+                    <td> Category : </td>
+                    <td> {{ form.category }} </td>
+                </tr>
+                <tr class="d-flex justify-content-center">
+                    <td>
+                        {% if task == "add" %}
+                            <input type="submit" value="Add" class = "btn btn-success">
+                        {% endif %}
+                        {% if task == "edit" %}
+                            <input type="submit" value="Edit" class = "btn btn-primary">
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary" value="Add Task"></input>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
